@@ -1,0 +1,191 @@
+export { yellow as theme } from 'mdx-deck/themes'
+
+# Typescript
+
+---
+
+## 1. JS es el lenguaje más popular y relevante.
+## 2. Sin tipos, es muy difícil escribir programas grandes.
+## 3. TS es el mejor intento de agregarle tipos a JS.
+
+---
+
+# 1. JS es muy relevante en la industria de software
+
+- Porque corre nativamente en un browser.
+- El browser la plataforma de software más popular hace por lo menos 15 años [^1].
+- Sobrevivió varios intentos de ser reemplazado como plataforma [^2]:
+    - Java Applets (1995 - 2017)
+    - Activex (1996 - 2015)
+    - Flash (1996 - 2020)
+    - Silverlight (2007 - 2015)
+
+ - Webassembly candidato más maduro a complementar javascript como plataforma.
+
+[^1] https://auth0.com/blog/a-brief-history-of-javascript/
+[^2] https://blog.usejournal.com/is-webassembly-really-the-death-of-javascript-7dd3e56e4188
+
+---
+
+## Varios otros lenguajes intentan transpilar a JS.
+- GWT (java)
+- Elm
+- Kotlin
+- Clojure.js
+- Scala.js
+- Dart
+
+### Todos sufren de problemas de interoperabilidad.
+
+---
+
+## El browser hace rato no es sólo HTML
+
+- Local storage and database (indexedDb)
+- Offline loading (service workers)
+- Multi touch interaction
+- Audio/video access
+- Push notifications
+- Websockets
+
+---
+
+## El browser inyectado en otros ambientes.
+
+- Desktop: electron
+- Mobile: ionic/cordova
+
+## Javascript en otras plataformas
+- Server: nodejs
+- IoT: jerryscript
+
+---
+
+## Problemas con el javascript
+
+- Serios problemas de coerción de valores
+- Falta de una lib de colecciones competitiva
+- Librerías populares y efímeras, no bien diseñadas
+- No tiene chequeo de tipos.
+
+---
+
+
+# 2. Sin tipos, es muy difícil escribir programas grandes.
+
+---
+
+## Hay 2 audiencias para el código de un programa:
+1. La computadora que ejecuta nuestro código
+2. Los humanos que continuarán escribiendo código.
+
+---
+
+## Nos enfocamos demasiado en el item 1.
+- El mismo autor de un código, cambia con el tiempo.
+  - Leyeron alguna vez código que escribieron hace 2 años?
+- El software se escribe mayoritariamente en equipos.
+- En los equipos entran y salen miembros con el tiempo.
+
+---
+
+## Los tipos ayudan a explicar qué hace el software
+## Sin tener que leer la implementacion.
+
+---
+
+## Nuevos participantes en el desarrollo de software:
+
+- Las herramientas (IDE, linter, analytics)
+- Hay herramientas que leen, entienden y nos ayudan a modificar código.
+- Los tipos son el medio de comunicación entre nosotros y las herramientas.
+
+---
+
+## Necesito un oráculo para mi programa:
+- quiénes utilizan este método?
+- qué implementaciones hay para esta API?
+- qué pasa si esta variable tiene un valor nulo?
+
+## Además necesito evolucionar código que no escribí:
+- Si renombro este método, renombrar todos sus usos
+
+
+---
+# 3. TS es el mejor intento de agregarle tipos a JS.
+
+---
+
+## Typescript es Javascript + anotaciones de tipo.
+- Cualquier archivo javascript es typescript válido
+- Typescript agrega anotaciones de tipo para ofrecer chequeos y herramientas de desarrollo.
+- Typescript es un compilador de tipo "transpiler", basicamente compila a javscript
+- El transpiler básicamente 'quita' la información de tipo para emitir javascript.
+- Typescript no agrega ninguna semántica nueva al lenguaje, todo funciona tal cual javascript.
+
+---
+
+## Qué es una anotación de tipo?
+- Tipar es restringir explícitamente las interacciones entre piezas de software.
+- Limitando los tipos de valores que funciones pueden tomar o devolver.
+- Más otros modificadores (private, protected, public, abstract)
+
+---
+
+- Qué pinta tiene esto?
+```
+
+function find(elements, test){
+    for (const element of elements){
+        if (test(element)){
+            return element
+        }
+    }
+}
+```
+
+```
+
+function find<T>(elements: T[], test: (element: T) => boolean): T{
+    for (const element of elements){
+        if (test(element)){
+            return element
+        }
+    }
+}
+```
+
+---
+
+## Que lo hace especial a typescript
+- No tengo que aprender un nuevo lenguaje.
+- Puedo empezar con javascript y gradualmente agregar anotaciones de tipo.
+- Se pueden tipar libs "por afuera".
+- El codigo emitido es practicamente igual al que escribí, aún sin source maps.
+- Puedo emitir código que corra en versiones anteriores de js (es3, es5)
+
+
+---
+
+# Pantallazo de construcciones de Typescript
+
+- Tipos primitivos: `number, string, boolean, null, undefined`
+- Tipos compuestos: `interface (objetos), array<T>`
+- Complementos: `Enum`
+- Combinaciones: `opción (|), unión (&)`
+- Tipos raros: `valores como tipos.`
+
+---
+
+# Typescript en ProfitWell
+
+- mobile-app: 20k lienas
+- web-app: 60k javascript + 56k typescript.
+
+
+---
+
+# Gracias
+
+rafael@profitwell.com
+
